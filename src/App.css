@@ -1,7 +1,7 @@
 .App {
   text-align: center;
-  background-color: rgb(20, 56, 97);
-  color: #cccccc;
+  background-color: #282c34;
+  color: white;
 }
 
 .coin-table {
@@ -22,7 +22,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #1b222f;
   min-height: 20vh;
   display: flex;
   flex-direction: row;
@@ -33,7 +33,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: white;
 }
 
 .App-title {
