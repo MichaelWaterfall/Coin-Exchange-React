@@ -29,7 +29,7 @@ export default class CoinHeader extends Component {
         <Header>
             <Img src={logo} alt="React Logo" />
             <H1>
-                Coin Exchange     
+                Moon Exchange    
             </H1>
         </Header>
     );

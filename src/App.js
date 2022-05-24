@@ -5,6 +5,11 @@ import styled from 'styled-components';
 import Header from './components/Header/Header';
 import axios from 'axios';
 
+//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootswatch/dist/solar/bootstrap.min.css';  
+
+import '@fortawesome/fontawesome-free/js/all';
+
 const Div = styled.div`
     text-align: center;
     background-color: #282c34;
@@ -17,7 +22,7 @@ const formatPrice = price =>parseFloat(Number(price).toFixed(4));
 function App(props) {
 
   const [balance, setBalance] = useState(10000);
-  const [showBalance, setShowBalance] = useState(true);
+  const [showBalance, setShowBalance] = useState(false);
   const [coinData, setCoinData] = useState([]);
 
   const componentDidMount = async () => {
@@ -46,6 +51,10 @@ function App(props) {
     }
   });
 
+ // const handleMoney = () => {
+    //setBalance( oldBalance => oldBalance + 1200);
+  //}
+
   const handleBalanceVisibilityChange = () => {
     setShowBalance(oldValue => !oldValue);
   }
@@ -70,7 +79,8 @@ function App(props) {
       <Header />
       <AccountBalance 
         amount= {balance}
-        showBalance={showBalance} 
+        showBalance={showBalance}
+        //handleMoney={handleMoney} 
         handleBalanceVisibilityChange={handleBalanceVisibilityChange} />
       <CoinList 
         coinData={coinData} 
