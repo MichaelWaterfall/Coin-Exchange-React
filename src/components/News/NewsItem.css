@@ -1,0 +1,16 @@
+.news-item {
+    width: 500px;
+    padding: 20px;
+    border: 1px solid;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 50%; 
+    
+    
+}
+
+.news-img {
+    width: 400px;
+    
+}

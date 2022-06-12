@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './logo192.png';
 import styled from 'styled-components';
+
+
 
   const Img = styled.img`
     height: 20vmin;
@@ -27,7 +29,7 @@ export default class CoinHeader extends Component {
   render() {
     return (
         <Header>
-            <Img src={logo} alt="React Logo" />
+            < Img src={logo} alt="https://pngtree.com/so/The'>The png from pngtree.com"  />
             <H1>
                 Moon Exchange    
             </H1>

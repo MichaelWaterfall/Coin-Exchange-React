@@ -3,12 +3,16 @@ import AccountBalance from './components/AccountBalance/AccountBalance.jsx';
 import CoinList from './components/CoinList/CoinList';
 import styled from 'styled-components';
 import Header from './components/Header/Header';
+import NewsList from './components/News/NewsList';
 import axios from 'axios';
+//import {ScrollBox, ScrollAxes, FastTrack} from 'react-scroll-box';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootswatch/dist/solar/bootstrap.min.css';  
 
 import '@fortawesome/fontawesome-free/js/all';
+
+
 
 const Div = styled.div`
     text-align: center;
@@ -16,10 +20,15 @@ const Div = styled.div`
     color: white;
 `;
 
+const News = styled.div`
+    font-size: 50px;
+    
+`;
+
 const COIN_COUNT = 10;
 const formatPrice = price =>parseFloat(Number(price).toFixed(4));
 
-function App(props) {
+function App() {
 
   const [balance, setBalance] = useState(10000);
   const [showBalance, setShowBalance] = useState(false);
@@ -51,12 +60,38 @@ function App(props) {
     }
   });
 
- // const handleMoney = () => {
-    //setBalance( oldBalance => oldBalance + 1200);
-  //}
+ const handleMoney = () => {
+    setBalance( oldBalance => oldBalance + 12000);
+  }
 
   const handleBalanceVisibilityChange = () => {
     setShowBalance(oldValue => !oldValue);
+  }
+
+  
+
+  const handleTransaction = (isBuy, valueChangeId) => {
+    var balanceChange = isBuy ? 1 : -1;
+    const newCoinData = coinData.map( function(values) {
+      let newValues = {...values};
+      if ( valueChangeId === values.key) {
+        if( isBuy ) {
+          if ( balance < newValues.price * balanceChange ) {
+            alert('Insufficient funds for this purchase.');
+            return values;
+          }
+        } else {
+          if ( values.balance + balanceChange < 0) {
+            alert('Insufficient holdings for this sell order.');
+            return values
+          } 
+        } // Transaction is possible.
+        newValues.balance += balanceChange;
+        setBalance( oldBalance => oldBalance - balanceChange * newValues.price);
+      }
+      return newValues;
+    })
+    setCoinData(newCoinData);
   }
 
   const handleRefresh = async (valueChangeId) => {
@@ -76,17 +111,21 @@ function App(props) {
   
   return (
     <Div className="App">
-      <Header />
+      <Header /> 
       <AccountBalance 
         amount= {balance}
         showBalance={showBalance}
-        //handleMoney={handleMoney} 
+        handleMoney={handleMoney} 
         handleBalanceVisibilityChange={handleBalanceVisibilityChange} />
       <CoinList 
         coinData={coinData} 
         showBalance={showBalance}
+        handleTransaction={handleTransaction}
         handleRefresh={handleRefresh} />
+      <News> Crypto News</News>
+      <NewsList />
     </Div>
+    
   );
 
   

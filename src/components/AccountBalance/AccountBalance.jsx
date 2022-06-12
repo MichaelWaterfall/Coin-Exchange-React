@@ -22,6 +22,7 @@ const Balance = styled.div`
 
 const Button = styled.button`
   margin: 0 8px;
+  
 `; 
 
 const BalanceToggleButton = styled(Button)`
@@ -45,18 +46,18 @@ export default function AccountBalance(props) {
       <>
       <Balance>{content}</Balance>
       <Section>
-        {content}
-        <BalanceToggleButton onClick={props.handleBalanceVisibilityChange}
-        className={buttonClass}
-        >{buttonText}
+        <BalanceToggleButton 
+        onClick={props.handleBalanceVisibilityChange}
+        className={buttonClass}>
+        {buttonText}
         </BalanceToggleButton>
-        <Button className="btn btn-success">
-                
+        <Button className="btn btn-success"
+                onClick={props.handleMoney}>
           <i className="fa-solid fa-user-astronaut"></i>
         </Button>
       </Section>
     </>
-    );
+  );
 
 }
 
