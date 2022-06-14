@@ -1,5 +1,5 @@
 import React from 'react'
-import Coin from '../Coin/Coin.jsx';
+import Coin from '../Coin/Coin';
 import styled from 'styled-components';
 import NewsList from '../News/NewsList.js';
 
