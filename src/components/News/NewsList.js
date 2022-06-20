@@ -17,12 +17,13 @@ const NewsList = () => {
     useEffect(() => {
         const getArticles = async () => {   
             const response = await Axios.get(
-                "https://newsapi.org/v2/everything?q=crypto&sortBy=publishedAt&language=en&apiKey=ab195a26389e4cce9deca55240a35f85"
+                "http://localhost:5000/news"
             );
-        
+                
             setArticles(response.data.articles);
+            console.log("test");
             console.log(response);
-        };
+        };  
         
         getArticles();
     }, []);
