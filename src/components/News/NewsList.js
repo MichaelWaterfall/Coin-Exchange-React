@@ -17,7 +17,7 @@ const NewsList = () => {
     useEffect(() => {
         const getArticles = async () => {   
             const response = await Axios.get(
-                "http://localhost:5000/news"
+                "https://backend-uoap.onrender.com/news"
             );
                 
             setArticles(response.data.articles);
